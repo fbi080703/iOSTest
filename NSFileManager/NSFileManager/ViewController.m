@@ -162,16 +162,16 @@
 //NSDirectoryEnumerationSkipsHiddenFile: 不会扫描隐藏文件
 
 
-NSFileManagerDelegate
-
-NSFileManager 可以设置一个 <NSFileManagerDelegate> protocol 来确认是否要进行特定的文件操作。它允许进行一些业务逻辑，比如保护一些文件删除，在 Controller 中删除一些元素
-
-NSFileManagerDelegate里面有四个方法，每个按照path变化
-
--fileManager:shouldMoveItemAtURL:toURL:
--fileManager:shouldCopyItemAtURL:toURL:
--fileManager:shouldRemoveItemAtURL:
--fileManager:shouldLinkItemAtURL:toURL:
+//NSFileManagerDelegate
+//
+//NSFileManager 可以设置一个 <NSFileManagerDelegate> protocol 来确认是否要进行特定的文件操作。它允许进行一些业务逻辑，比如保护一些文件删除，在 Controller 中删除一些元素
+//
+//NSFileManagerDelegate里面有四个方法，每个按照path变化
+//
+//-fileManager:shouldMoveItemAtURL:toURL:
+//-fileManager:shouldCopyItemAtURL:toURL:
+//-fileManager:shouldRemoveItemAtURL:
+//-fileManager:shouldLinkItemAtURL:toURL:
 
 //如果你想用 alloc init 初始化你自己的 NSFileManager 来取代shared实例，那就要用它了，就像文档说的
 //
