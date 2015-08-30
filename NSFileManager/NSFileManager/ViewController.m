@@ -162,6 +162,48 @@
 //NSDirectoryEnumerationSkipsHiddenFile: 不会扫描隐藏文件
 
 
+NSFileManagerDelegate
+
+NSFileManager 可以设置一个 <NSFileManagerDelegate> protocol 来确认是否要进行特定的文件操作。它允许进行一些业务逻辑，比如保护一些文件删除，在 Controller 中删除一些元素
+
+NSFileManagerDelegate里面有四个方法，每个按照path变化
+
+-fileManager:shouldMoveItemAtURL:toURL:
+-fileManager:shouldCopyItemAtURL:toURL:
+-fileManager:shouldRemoveItemAtURL:
+-fileManager:shouldLinkItemAtURL:toURL:
+
+//如果你想用 alloc init 初始化你自己的 NSFileManager 来取代shared实例，那就要用它了，就像文档说的
+//
+//如果你使用一个delegate 来接受移动，拷贝，涉案出，以及链接的操作，你需要创建一个独一无二的实例，将delegate绑定到你的实例中，用这个fielmanager开始你的操作
+//
+//
+//NSFileManager *fileManager = [[NSFileManager alloc] init];
+//fileManager.delegate = delegate;
+//
+//NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+//NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
+//                               includingPropertiesForKeys:@[]
+//                                                  options:NSDirectoryEnumerationSkipsHiddenFiles
+//                                                    error:nil];
+//
+//for (NSString *filePath in contents) {
+//    [fileManager removeItemAtPath:filePath error:nil];
+//}
+//
+//CustomFileManagerDelegate.m
+//Objective-C
+//
+//#pragma mark - NSFileManagerDelegate
+//
+//- (BOOL)fileManager:(NSFileManager *)fileManager
+//shouldRemoveItemAtURL:(NSURL *)URL
+//{
+//    return ![[[URL lastPathComponent] pathExtension] isEqualToString:@"pdf"];
+//}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
